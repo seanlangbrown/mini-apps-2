@@ -1,5 +1,6 @@
 import React from 'react';
 import TextInput from './textInput.jsx';
+import ValidatedInput from './validatedInput.jsx';
 import validators from './formValidators.js';
 
 
@@ -28,7 +29,7 @@ class Login extends React.Component {
   onChangeUpdateState(key) {
     return (e) => {
       console.log(e.target.value);
-      this.updateState(key, e.target.value);
+      //this.updateState(key, e.target.value);
     };
   }
 
@@ -51,11 +52,7 @@ class Login extends React.Component {
   };
 
   validPasswordMessage() {
-    if (this.state.password === null || validators.isValidPassword(this.state.password)) {
-      return null;
-    } else {
       return "passwords must contain 1 letter, one nummber, and one of: @ $ % & % *";
-    }
   }
 
   render () {
@@ -64,7 +61,7 @@ class Login extends React.Component {
         <h4>Create an Account</h4>
         <TextInput name={"First Name"} value={""} message={"this is valid."} onChange={this.onChangeUpdateState("first")} />
         <TextInput name={"Last Name"} value={""} message={"this is valid."} onChange={this.onChangeUpdateState("last")} />
-        <TextInput name={"Email"} value={""} message={this.validEmailMessage()} onChange={this.onChangeUpdateState("email")} />
+        <ValidatedInput name={"Email"} value={""} message={""} onChange={this.onChangeUpdateState("email")} validator={validators.isValidEmail} validationWarning={this.validPasswordMessage()} info={"this is so we can send you tracking updates and a receipt.  It will also be your login in the future."} />
         <TextInput name={"Password"} value={""} message={this.validPasswordMessage()} onChange={this.onChangeUpdateState("password")} />
         <button onClick={this.submitPage} >next</button>
       </div>

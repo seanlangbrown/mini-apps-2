@@ -1,7 +1,6 @@
 import React from 'react';
 
 const textInput = (props) => {
-	
   return(
 	  <div className="textInput">
 	  	<p className="textPrompt">{props.name}</p>
