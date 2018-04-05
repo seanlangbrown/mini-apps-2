@@ -1,4 +1,5 @@
 import React from 'react';
+import TextInput from './TextInput.jsx';
 
 
 class checkoutPayment extends React.Component {
@@ -8,7 +9,11 @@ class checkoutPayment extends React.Component {
 
   render () {
     return (
-      null
+      <div id="checkoutPayment" >
+        <TextInput name="Credit Card" value="" message="type of card" onChange={null} />
+        <TextInput name="CVV" value="" message="" onChange={null} />
+        <TextInput name="Billing ZIP code" value="" message="City, State" onChange={null} />
+      </div>
     );
   }
 }
