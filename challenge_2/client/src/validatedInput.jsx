@@ -10,7 +10,7 @@ class ValidatedInput extends React.Component {
       name: this.props.name,
       message: this.props.message,
       value: this.props.value,
-      valid: true
+      valid: this.props.validator(this.props.value)
     };
     this.validate = this.validate.bind(this);
 	}

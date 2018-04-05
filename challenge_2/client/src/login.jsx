@@ -1,7 +1,8 @@
 import React from 'react';
 import TextInput from './textInput.jsx';
-import ValidatedInput from './validatedInput.jsx';
-import validators from './formValidators.js';
+import NameInput from './nameInput.jsx';
+import EmailInput from './emailInput.jsx';
+import PasswordInput from './passwordInput.jsx';
 
 
 class Login extends React.Component {
@@ -51,18 +52,14 @@ class Login extends React.Component {
     }
   };
 
-  validPasswordMessage() {
-      return "passwords must contain 1 letter, one nummber, and one of: @ $ % & % *";
-  }
 
   render () {
     return (
       <div id="checkoutLogin">
         <h4>Create an Account</h4>
-        <TextInput name={"First Name"} value={""} message={"this is valid."} onChange={this.onChangeUpdateState("first")} />
-        <TextInput name={"Last Name"} value={""} message={"this is valid."} onChange={this.onChangeUpdateState("last")} />
-        <ValidatedInput name={"Email"} value={""} message={""} onChange={this.onChangeUpdateState("email")} validator={validators.isValidEmail} validationWarning={this.validPasswordMessage()} info={"this is so we can send you tracking updates and a receipt.  It will also be your login in the future."} />
-        <TextInput name={"Password"} value={""} message={this.validPasswordMessage()} onChange={this.onChangeUpdateState("password")} />
+        <NameInput onChangeUpdateState={this.onChangeUpdateState} />
+        <EmailInput onChangeUpdateState={this.onChangeUpdateState} />
+        <PasswordInput onChangeUpdateState={this.onChangeUpdateState} />
         <button onClick={this.submitPage} >next</button>
       </div>
     );
