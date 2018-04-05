@@ -1,21 +1,19 @@
 {
-  "name": "challenge_1",
+  "name": "challenge_2",
   "version": "1.0.0",
-  "description": "cryptocurrencyPlotter",
-  "main": "server.js",
+  "description": "checkoutapp",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "start": "node server/server.js",
     "build": "webpack-dev-server --config ./webpack.config.js --mode development"
   },
   "author": "Sean Lang-Brown",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
-    "chart.js": "^2.0.0",
     "lodash": "^4.17.5",
     "react": "^16.3.1",
-    "react-chartjs-2": "^2.7.0",
     "react-dom": "^16.3.1",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.13",

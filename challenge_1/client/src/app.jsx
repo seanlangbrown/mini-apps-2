@@ -1,4 +1,5 @@
 import React from 'React';
+import TSContainer from './TSContainer.jsx';
 
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
     return (
       <div>
         <p>'React App!'</p>
+        <TSContainer />
       </div>
     );
   }
