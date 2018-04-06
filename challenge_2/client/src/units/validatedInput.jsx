@@ -1,6 +1,6 @@
 import React from 'react';
-import TextInput from './textInput.jsx';
-import InfoButton from './InfoButton';
+import TextInput from '../units/textInput.jsx';
+import InfoButton from '../units/InfoButton';
 
 
 class ValidatedInput extends React.Component {

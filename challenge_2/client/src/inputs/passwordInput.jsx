@@ -1,6 +1,6 @@
 import React from 'react';
-import ValidatedInput from './validatedInput.jsx';
-import validators from './formValidators.js';
+import ValidatedInput from '../units/validatedInput.jsx';
+import validators from '../formValidators.js';
 
 //TODO: connect Redux here
 

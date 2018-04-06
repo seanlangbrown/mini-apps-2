@@ -1,5 +1,5 @@
 import React from 'react';
-import TextInput from './TextInput.jsx';
+import TextInput from '../units/TextInput.jsx';
 
 
 class checkoutPayment extends React.Component {

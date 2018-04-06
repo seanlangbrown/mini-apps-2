@@ -1,6 +1,6 @@
 import React from 'react';
-import TextInput from './textInput.jsx';
-import validators from './formValidators.js';
+import TextInput from '../units/textInput.jsx';
+import validators from '../formValidators.js';
 
 //TODO: connect Redux here
 

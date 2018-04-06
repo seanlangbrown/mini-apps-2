@@ -1,8 +1,8 @@
 import React from 'react';
-import TextInput from './textInput.jsx';
-import NameInput from './nameInput.jsx';
-import EmailInput from './emailInput.jsx';
-import PasswordInput from './passwordInput.jsx';
+import TextInput from '../units/textInput.jsx';
+import NameInput from '../inputs/nameInput.jsx';
+import EmailInput from '../inputs/emailInput.jsx';
+import PasswordInput from '../inputs/passwordInput.jsx';
 
 
 class Login extends React.Component {

@@ -1,8 +1,8 @@
 import React from 'react';
-import CheckoutButton from './checkoutButton.jsx';
-import Login from './login.jsx';
-import CheckoutShipping from './checkoutShipping.jsx';
-import CheckoutPayment from './checkoutPayment.jsx';
+import CheckoutButton from './pages/checkoutButton.jsx';
+import Login from './pages/login.jsx';
+import CheckoutShipping from './pages/checkoutShipping.jsx';
+import CheckoutPayment from './pages/checkoutPayment.jsx';
 
 
 
