@@ -28,19 +28,37 @@ class App extends React.Component {
     this.createUser = this.createUser.bind(this);
     this.setShippingAddress = this.setShippingAddress.bind(this);
     this.acceptPayment = this.acceptPayment.bind(this);
+    this.onChangeUpdateState = this.onChangeUpdateState.bind(this);
   }
 
   logClicked (e) {
     console.log('clicked', e);
   }
 
+  updateState (key, value) {
+    let newState = {}
+    newState[key] = value;
+    this.setState(newState);
+  }
+
+  onChangeUpdateState (key) {
+    return (e) => {
+      console.log(e.target.value);
+      this.updateState(key, e.target.value);
+    };
+  }
+
   createUser (first, last, email, password) {
+    if (!(first && last && email && password)) {
+      return
+    }
     this.setState({
       first: first,
       last: last,
       email: email,
       password: password
     });
+    //route to next page
   }
 
   setShippingAddress (line1, line2, city, state, zip, phone) {
@@ -54,12 +72,12 @@ class App extends React.Component {
     });
   }
 
-  acceptPayment (creditCard, cvv, creditCardZip) {
-    this.setState({
-      creditCard: creditCardZip,
-      cvv: cvv,
-      creditCardZip: creditCardZip
-    });
+  acceptPayment () {
+    if (!(this.state.creditCard && this.state.cvv && this.state.creditCardZip)) {
+      console.log('validation error');
+      return;
+    }
+    //navigate to next page
   }
 
 
@@ -72,7 +90,7 @@ class App extends React.Component {
         <CheckoutButton beginCheckout={this.logClicked} />
         <Login createUser={this.createUser} />
         <CheckoutShipping setShippingAddress={this.setShippingAddress} />
-        <CheckoutPayment processPayment={this.acceptPayment} />
+        <CheckoutPayment submitPage={this.acceptPayment} onChangeUpdateState={this.onChangeUpdateState} creditCard={this.state.creditCard} cvv={this.state.cvv} creditCardZip={this.state.creditCardZip} />
       </div>
     );
   }
