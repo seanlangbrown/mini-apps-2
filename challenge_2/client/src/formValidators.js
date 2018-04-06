@@ -29,4 +29,6 @@ const isValidPassword = function(password) {
 		return false;
 	}
 
-export default { isValidPassword, isValidEmail };
+const isValidPhone = () => (true); //TODO
+
+export default { isValidPassword, isValidEmail, isValidPhone };

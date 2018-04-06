@@ -1,6 +1,6 @@
 import React from 'react';
-import TextInput from '../units/TextInput';
-
+import AddressInput from '../inputs/AddressInput.jsx';
+import PhoneInput from '../inputs/PhoneInput.jsx';
 
 class checkoutShipping extends React.Component {
   constructor () {
@@ -12,12 +12,8 @@ class checkoutShipping extends React.Component {
   render () {
     return (
       <div id="checkoutShipping">
-        <TextInput name="Address line 1" value="" message="" onchange={null} />
-        <TextInput name="Address line 1" value="" message="" onchange={null} />
-        <TextInput name="City" value="" message="" onchange={null} />
-        <TextInput name="State" value="" message="" onchange={null} />
-        <TextInput name="ZIP code" value="" message="" onchange={null} />
-        <TextInput name="Phone Number" value="" message="" onchange={null} />
+        <AddressInput />
+        <PhoneInput />
       </div>
     );
   }
