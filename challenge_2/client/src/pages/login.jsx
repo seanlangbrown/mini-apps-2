@@ -18,7 +18,6 @@ class Login extends React.Component {
     this.updateState = this.updateState.bind(this);
     this.submitPage = this.submitPage.bind(this);
     this.onChangeUpdateState = this.onChangeUpdateState.bind(this);
-    this.validEmailMessage = this.validEmailMessage.bind(this);
   }
 
   updateState(key, value) {
@@ -43,14 +42,6 @@ class Login extends React.Component {
     }
     this.props.createUser(this.state.first, this.state.last, this.state.email, this.state.password);
   }
-
-  validEmailMessage () {
-    if (this.state.email === null || validators.isValidEmail(this.state.email)) {
-      return null;
-    } else {
-      return "invalid email"
-    }
-  };
 
 
   render () {

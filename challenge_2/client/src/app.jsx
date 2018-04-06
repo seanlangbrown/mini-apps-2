@@ -19,6 +19,7 @@ class App extends React.Component {
       city: null,
       state: null,
       zip: null,
+      phone: null,
       creditCard: null,
       cvv: null,
       creditCardZip: null
@@ -42,13 +43,14 @@ class App extends React.Component {
     });
   }
 
-  setShippingAddress (line1, line2, city, state, zip) {
+  setShippingAddress (line1, line2, city, state, zip, phone) {
     this.setState({
       addressOne: line1,
       addressTwo: line2,
       city: city,
       state: state,
-      zip: zip
+      zip: zip,
+      phone: phone
     });
   }
 
@@ -59,6 +61,10 @@ class App extends React.Component {
       creditCardZip: creditCardZip
     });
   }
+
+
+
+
 
   render () {
     return (
