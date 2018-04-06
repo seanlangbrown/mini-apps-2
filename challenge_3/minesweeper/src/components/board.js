@@ -13,13 +13,17 @@ class Board extends React.Component {
   render () {
 
     const boardrow = (row, rownum) => {
-      return _.map(row, (square, colnum) => {
+      return(
+        <div className="boardrow" >
+        {_.map(row, (square, colnum) => {
         return (
-          <div className="boardrow">
+          <div className="cell" >
             <Cell state={square} row={rownum} column={colnum} checkCell={this.props.checkCell} />
           </div>
         );
-      });
+        })}
+        </div>
+      );
     };
 
     return (

@@ -23,11 +23,13 @@ class Minesweeper extends React.Component {
       ],
       bombs: 10,
       turn: 0,
-      lives: 3
+      lives: 3,
+      uncovered: 0
     };
     this.checkCell = this.checkCell.bind(this);
     this.uncoverCell = this.uncoverCell.bind(this);
     this.decrementState = this.decrementState.bind(this);
+    this.createGame = this.createGame.bind(this);
   }
 
   checkCell (row, col) {
@@ -54,6 +56,10 @@ class Minesweeper extends React.Component {
     //uncover square if possible
     if (this.state.board[row][col] === '') {
       this.updateState(row, col, 0);
+      let uncovered = this.state.uncovered + 1;
+      this.setState({
+        uncovered: uncovered
+      });
       //check surrounding squares
       //this.uncoverCell(row - 1, col - 1);
       this.uncoverCell(row - 1, col);
@@ -71,14 +77,17 @@ class Minesweeper extends React.Component {
   updateState (row, col, val) {
     let board = this.state.board;
     board[row][col] = val;
-    console.log(board);
+    //console.log(board);
     this.setState({
       board: board
     });
   }
 
-  decrementState(row, col) {
-    let val = this.state.board[row][col];
+  decrementState(row, col, board) {
+    if (row < 0 || row > 9 || col < 0 || col > 9) {
+      return
+    }
+    let val = board ? board[row][col] : this.state.board[row][col];
     if (val === 'b') {
       return
     }
@@ -90,10 +99,26 @@ class Minesweeper extends React.Component {
     if (val === 0) {
       val = '';
     }
-    this.updateState(row, col, val);
+    if (board) {
+      board[row][col] = val;
+    } else {
+      this.updateState(row, col, val);
+    }
   }
 
   createGame () {
+    let board = [
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', '', '']
+      ];
     for(var i = 0; i < this.state.bombs; i++) {
       //random col
       let row = null;
@@ -101,18 +126,25 @@ class Minesweeper extends React.Component {
       do {
         col = Math.floor(Math.random() * 10);
         row = Math.floor(Math.random() * 10);
-        console.log(row, col);
-      } while (this.state.board[row][col] === 'b');
-      this.updateState(row, col, 'b');
+        //console.log(row, col);
+      } while (board[row][col] === 'b');
+      board[row][col] = 'b';
       //random row
       //for surrounding squares, decrement counter
-      this.decrementState(row + 1, col);
-      this.decrementState(row - 1, col);
-      this.decrementState(row + 1, col + 1);
-      this.decrementState(row -1, col - 1);
-      this.decrementState(row, col - 1);
-      this.decrementState(row, col + 1);
+      this.decrementState(row + 1, col, board);
+      this.decrementState(row - 1, col, board);
+      this.decrementState(row + 1, col + 1, board);
+      this.decrementState(row -1, col - 1, board);
+      this.decrementState(row, col - 1, board);
+      this.decrementState(row, col + 1, board);
     }
+    this.setState({
+      board: board,
+      bombs: 10,
+      turn: 0,
+      lives: 3,
+      uncovered: 0
+    });
   }
 
   componentDidMount () {
@@ -123,9 +155,10 @@ class Minesweeper extends React.Component {
 
     return (
       <div className="minesweeper">
-        <GameState live={this.state.lives}/>
+        <GameState lives={this.state.lives} uncovered={this.props.uncovered} />
         <Board board={this.state.board} checkCell={this.checkCell} />
         <Turns turns={this.state.turn} lives={this.state.lives} bombs={this.state.bombs}/>
+        <button onClick={this.createGame}>Restart</button>
       </div>
     );
   }

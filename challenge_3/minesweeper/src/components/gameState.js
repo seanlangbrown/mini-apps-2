@@ -11,7 +11,7 @@ class GameState extends React.Component {
   render () {
 
     return (
-      <p>{this.props.lives === 0 ? "GAME OVER" : "click a square"}</p>
+      <p>{this.props.lives <= 0 ? "GAME OVER" : this.props.uncovered === 90 ? "YOU WON!" : "click a square"}</p>
     );
   }
 }
