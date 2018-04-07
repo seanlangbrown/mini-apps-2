@@ -131,10 +131,12 @@ class Minesweeper extends React.Component {
       board[row][col] = 'b';
       //random row
       //for surrounding squares, decrement counter
+      this.decrementState(row + 1, col - 1, board);
       this.decrementState(row + 1, col, board);
-      this.decrementState(row - 1, col, board);
       this.decrementState(row + 1, col + 1, board);
-      this.decrementState(row -1, col - 1, board);
+      this.decrementState(row - 1, col - 1, board);
+      this.decrementState(row - 1, col, board);
+      this.decrementState(row - 1, col + 1, board);
       this.decrementState(row, col - 1, board);
       this.decrementState(row, col + 1, board);
     }
